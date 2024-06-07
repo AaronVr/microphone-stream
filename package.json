@@ -1,5 +1,5 @@
 {
-  "name": "microphone",
+  "name": "microphone-stream",
   "version": "0.0.1",
   "description": "A configurable microphone stream library.",
   "exports": {
@@ -19,7 +19,7 @@
     "build": "tsc",
     "postinstall": "tsc"
   },
-  "author": "",
+  "author": "Aaron Vranken",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^5.4.5",
