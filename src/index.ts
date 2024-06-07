@@ -1,6 +1,6 @@
 import { ChildProcess, SpawnOptions, spawn } from "child_process";
 import { Readable } from "stream";
-import { getOSType } from "./helpers/os-type";
+import { getOSType } from "./helpers/os-type.js";
 
 type Endianness = "little" | "big";
 type BitSize = 8 | 16 | 24 | 32;
@@ -92,7 +92,7 @@ export default class Microphone extends Readable {
       throw Error("Cannot have a sample rate lower than 1.");
   }
 
-  _construct(callback: (error?: Error | null | undefined) => void): void {
+  override _construct(callback: (error?: Error | null | undefined) => void): void {
     const osType = getOSType();
 
     const audioProcessOptions: SpawnOptions = {
@@ -178,13 +178,13 @@ export default class Microphone extends Readable {
     callback();
   }
 
-  _read(size: number): void {
+  override _read(size: number): void {
     this.unresolvedRead = size;
 
     this.resolveRead();
   }
 
-  _destroy(
+  override _destroy(
     error: Error | null,
     callback: (error?: Error | null | undefined) => void
   ): void {
